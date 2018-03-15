@@ -14,9 +14,14 @@ namespace GoneHome
         private Transform[] waypoints;
         private int currentIndex = 0;
 
+        private Vector3 spawnPoint;
+
         // Use this for initialization
         void Start()
         {
+            //Make a copy of the starting point
+            spawnPoint = transform.position;
+
             int length = waypointGroup.childCount;
             waypoints = new Transform[length];
             // for (initialization;  condition; iteration)
@@ -58,6 +63,12 @@ namespace GoneHome
                 currentIndex = 0;
             }
 
+        }
+
+        public void Reset()
+        {
+            transform.position = spawnPoint;
+            currentIndex = 0; //Resets current waypoiny to starting one
         }
     }
 }
